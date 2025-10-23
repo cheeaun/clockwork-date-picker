@@ -155,12 +155,29 @@ function getSunPosition(date, lng, lat) {
 }
 
 async function fetchUserLocation() {
+  const STORAGE_KEY = 'clockwork-date-picker:userLocation';
+  const cached = sessionStorage.getItem(STORAGE_KEY);
+  if (cached) {
+    try {
+      return JSON.parse(cached);
+    } catch (e) {}
+  }
+
   try {
-    const response = await fetch('http://ip-api.com/json/');
+    const k = atob('ZTM3MWMyMmNmMzVhNDQyZWFjYTViZjIxNjM3NzllYzA=');
+    const response = await fetch(
+      `https://api.geoapify.com/v1/ipinfo?&apiKey=${k}`,
+    );
     if (!response.ok) return null;
     const data = await response.json();
-    if (data.status === 'success' && data.lat && data.lon) {
-      return { lat: data.lat, lng: data.lon, country: data.country };
+    if (data.location && data.location.latitude && data.location.longitude) {
+      const location = {
+        lat: data.location.latitude,
+        lng: data.location.longitude,
+        country: data.country.name,
+      };
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(location));
+      return location;
     }
     return null;
   } catch (err) {
