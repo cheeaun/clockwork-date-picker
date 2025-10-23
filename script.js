@@ -15,7 +15,8 @@ if (!window.__clockworkInitialized) {
 const svg = document.getElementById('clock');
 const hourHand = document.getElementById('hour-hand');
 const minuteHand = document.getElementById('minute-hand');
-const timestamp = document.getElementById('timestamp');
+const timestampDate = document.getElementById('timestamp-date');
+const timestampTime = document.getElementById('timestamp-time');
 const resetBtn = document.getElementById('reset-btn');
 const minuteMarkers = document.getElementById('minute-markers');
 const hourMarkers = document.getElementById('hour-markers');
@@ -217,20 +218,26 @@ function updateDisplay(throttleTimestamp = false) {
     !throttleTimestamp || now - lastTimestampUpdate >= TIMESTAMP_THROTTLE;
 
   if (shouldUpdateTimestamp) {
-    const formatted = currentTime.toLocaleString(undefined, {
+    const dateFormatted = currentTime.toLocaleDateString(undefined, {
       year: 'numeric',
       month: 'numeric',
       day: 'numeric',
+    });
+    const timeFormatted = currentTime.toLocaleTimeString(undefined, {
       hour: 'numeric',
       minute: '2-digit',
     });
+    const formatted = `${dateFormatted} ${timeFormatted}`;
     if (formatted !== lastFormattedTime) {
       // Replace colons with spans for blinking effect
-      const parts = formatted.split(':');
-      if (parts.length > 1) {
-        timestamp.innerHTML = parts.join('<span class="colon">:</span>');
+      timestampDate.textContent = dateFormatted;
+      const timeParts = timeFormatted.split(':');
+      if (timeParts.length > 1) {
+        timestampTime.innerHTML = timeParts.join(
+          '<span class="colon">:</span>',
+        );
       } else {
-        timestamp.textContent = formatted;
+        timestampTime.textContent = timeFormatted;
       }
       lastFormattedTime = formatted;
       lastTimestampUpdate = now;
@@ -339,7 +346,7 @@ function updateFavicon() {
 }
 
 function updateBlinkState() {
-  const colons = timestamp.querySelectorAll('.colon');
+  const colons = timestampTime.querySelectorAll('.colon');
   colons.forEach((colon) => {
     if (!userHasInteracted) {
       colon.classList.add('blink');

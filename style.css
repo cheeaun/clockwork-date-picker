@@ -62,9 +62,17 @@ body {
   padding: 0;
 }
 
-#timestamp {
+#timestamp-date {
+  border: .125em solid;
+  padding: 0.2em 0.25em;
+  border-radius: 0.5em;
+}
+
+#timestamp-time {
+  font-size: smaller;
   font-variant-numeric: tabular-nums;
   cursor: text;
+  opacity: 0.75;
 }
 
 #instruction,
@@ -78,13 +86,13 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
+  gap: 0.25em;
 }
 
 #reset-btn {
   background: none;
   border: none;
-  font-size: 1em;
+  font-size: smaller;
   cursor: pointer;
   padding: 0.2em;
   line-height: 1;
