@@ -1,8 +1,3 @@
-if (import.meta.hot) {
-  // For Bun's HMR
-  import.meta.hot.accept();
-}
-
 window.__SPEED__ = 10;
 
 if (!window.__clockworkInitialized) {
