@@ -1,0 +1,7 @@
+{
+  "name": "clockwork-date-picker",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "bun --watch ./index.html"
+  }
+}

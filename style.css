@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --spacing: max(1em, 5vmin);
+  --bg-color: #f6f5f4;
+  --text-color: #191918;
+  --daylight-bg: #f6f5f4;
+  --daylight-text: #191918;
+  --golden-bg: #ffa07a;
+  --golden-text: #3d1f0f;
+  --twilight-bg: #1e3a5f;
+  --twilight-text: #e8f2ff;
+  --blue-hour-bg: #0f1e2e;
+  --blue-hour-text: #f0f6ff;
+  --night-bg: #232322;
+  --night-text: #f6f5f4;
+}
+
+html, body {
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing);
+  height: 100vh;
+  margin: 0;
+  padding: var(--spacing);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: background-color .3s ease-in-out, color 1s ease-in-out;
+  text-align: center;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+  cursor: default;
+}
+
+#clock {
+  width: 100%;
+  flex-shrink: 1;
+  touch-action: none;
+  pointer-events: auto;
+}
+
+#clock * {
+  cursor: grab;
+}
+
+#clock:active *,
+#clock.dragging {
+  cursor: grabbing;
+}
+
+#instruction {
+  margin: 0;
+  padding: 0;
+}
+
+#timestamp {
+  font-variant-numeric: tabular-nums;
+  cursor: text;
+}
+
+#instruction,
+footer {
+  font-size: var(--spacing);
+  text-box-trim: trim-both;
+  text-wrap: balance;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+#reset-btn {
+  background: none;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 0.2em;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+#reset-btn:hover {
+  opacity: 1;
+}
+
+#reset-btn:active {
+  transform: scale(0.9);
+}
+
+#reset-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.blink {
+  animation: blink 2s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+

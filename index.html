@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clockwork Date Picker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1 id="instruction">Pick a date. Drag the hands 👇</h1>
+    <svg id="clock" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="98" fill="white" />
+      <circle
+        cx="100"
+        cy="100"
+        r="96.5"
+        fill="none"
+        stroke="#000"
+        stroke-width="6"
+      />
+      <g id="minute-markers"></g>
+      <g id="hour-markers"></g>
+      <g id="hour-hand" style="transform-origin: 100px 100px; transition: transform 0.5s ease-out">
+        <polygon points="93.5,115 94.5,48 105.5,48 106.5,115" fill="#000" />
+      </g>
+      <g id="minute-hand" style="transform-origin: 100px 100px; transition: transform 0.5s ease-out">
+        <polygon points="96,125 97,15 103,15 104,125" fill="#000" />
+      </g>
+      <circle cx="100" cy="100" r="3.5" fill="#333" />
+    </svg>
+    <footer>
+      <b id="timestamp"></b>
+      <button id="reset-btn" title="Reset to current time">🔄</button>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
