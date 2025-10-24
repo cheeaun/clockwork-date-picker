@@ -18,6 +18,9 @@ const minuteHand = document.getElementById('minute-hand');
 const timestampDate = document.getElementById('timestamp-date');
 const timestampTime = document.getElementById('timestamp-time');
 const resetBtn = document.getElementById('reset-btn');
+const infoBtn = document.getElementById('info-btn');
+const infoDialog = document.getElementById('info-dialog');
+const closeDialogBtn = document.getElementById('close-dialog-btn');
 const minuteMarkers = document.getElementById('minute-markers');
 const hourMarkers = document.getElementById('hour-markers');
 
@@ -620,6 +623,20 @@ document.addEventListener('pointercancel', endPan);
 document.addEventListener('wheel', onWheel, { passive: false });
 
 resetBtn.addEventListener('click', resetToNow);
+
+infoBtn.addEventListener('click', () => {
+  infoDialog.showModal();
+});
+
+closeDialogBtn.addEventListener('click', () => {
+  infoDialog.close();
+});
+
+infoDialog.addEventListener('click', (e) => {
+  if (e.target === infoDialog) {
+    infoDialog.close();
+  }
+});
 
 window.addEventListener('resize', () => {
   needsRecalc = true;

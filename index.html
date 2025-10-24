@@ -33,9 +33,18 @@
     </svg>
     <footer>
       <b id="timestamp-date"></b>
-      <span id="timestamp-time"></span>
-      <button id="reset-btn" title="Reset to current time">🔄</button>
+      <div>
+        <span id="timestamp-time"></span>
+        <button id="reset-btn" title="Reset to current time">🔄</button>
+        <button id="info-btn" title="About">ℹ️</button>
+      </div>
     </footer>
+    <dialog id="info-dialog">
+      <h2>Clockwork Date Picker</h2>
+      <p>Made by <a href="https://github.com/cheeaun" target="_blank" rel="noopener">@cheeaun</a></p>
+      <p><a href="https://github.com/cheeaun/clockwork-date-picker" target="_blank" rel="noopener">Source on GitHub</a></p>
+      <button id="close-dialog-btn">Close</button>
+    </dialog>
     <script src="script.js"></script>
   </body>
 </html>

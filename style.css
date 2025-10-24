@@ -84,12 +84,14 @@ footer {
 
 footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.25em;
+  gap: 0.1em;
 }
 
-#reset-btn {
+#reset-btn,
+#info-btn {
   background: none;
   border: none;
   font-size: smaller;
@@ -100,17 +102,36 @@ footer {
   transition: opacity 0.2s;
 }
 
-#reset-btn:hover {
+#reset-btn:hover,
+#info-btn:hover {
   opacity: 1;
 }
 
-#reset-btn:active {
+#reset-btn:active,
+#info-btn:active {
   transform: scale(0.9);
 }
 
 #reset-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+dialog {
+  border: 0.125em solid var(--text-color);
+  border-radius: 1em;
+  padding: 2em;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+dialog h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+dialog a {
+  color: var(--text-color);
 }
 
 .blink {
