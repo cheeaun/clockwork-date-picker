@@ -4,6 +4,8 @@ Drag the clock hands to pick any time. Simple, tactile, satisfying.
 
 ![Screenshot](screenshot.jpg)
 
+https://github.com/user-attachments/assets/1a0fa228-2864-4faa-a4ac-aedbae49661e
+
 ## Run
 
 Just open `index.html` in your browser. Or run a dev server:
